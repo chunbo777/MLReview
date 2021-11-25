@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 import os
 import pandas as pd
-
+from iris import plot_decision_regions
 
 s = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 print('URL:', s)
@@ -105,4 +105,33 @@ ax[1].set_ylabel('Sum-squared-error')
 ax[1].set_title('Adaline - Learning rate 0.0001')
 
 plt.savefig('./02_11.png', dpi=300)
+plt.show()
+
+
+"""특성 스케일을 조정하여 각 특성의 평균을 0으로 맞추고 특성의 표준편차를 1로 만듬. 
+"""
+
+# 특성을 표준화합니다.
+X_std = np.copy(X)
+X_std[:, 0] = (X[:, 0] - X[:, 0].mean()) / X[:, 0].std()
+X_std[:, 1] = (X[:, 1] - X[:, 1].mean()) / X[:, 1].std()
+
+ada_gd = AdalineGD(n_iter=15, eta=0.01)
+ada_gd.fit(X_std, y)
+
+plot_decision_regions(X_std, y, classifier=ada_gd)
+plt.title('Adaline - Gradient Descent')
+plt.xlabel('sepal length [standardized]')
+plt.ylabel('petal length [standardized]')
+plt.legend(loc='upper left')
+plt.tight_layout()
+# plt.savefig('images/02_14_1.png', dpi=300)
+plt.show()
+
+plt.plot(range(1, len(ada_gd.cost_) + 1), ada_gd.cost_, marker='o')
+plt.xlabel('Epochs')
+plt.ylabel('Sum-squared-error')
+
+plt.tight_layout()
+# plt.savefig('images/02_14_2.png', dpi=300)
 plt.show()

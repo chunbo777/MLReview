@@ -1,7 +1,7 @@
 import numpy as np
-import wandb
+# import wandb
 
-wandb.init(project = "ML tutorial")
+# wandb.init(project = "ML tutorial")
 class Perceptron(object):
     def __init__(self, learning_rate = 0.01, epochs =50, random_state =1):
         self.learning_rate = learning_rate
@@ -26,8 +26,8 @@ class Perceptron(object):
             self.errors_.append(errors)
         return self
     def net_input(self, X):
-        wandb.log({"weight0":self.w_[0], "weight1~":self.w_[1:],"predict":np.dot(X, self.w_[1:])+self.w_[0]
- })
+#         wandb.log({"weight0":self.w_[0], "weight1~":self.w_[1:],"predict":np.dot(X, self.w_[1:])+self.w_[0]
+#  })
         return np.dot(X, self.w_[1:])+self.w_[0]
 
     def predict(self, X):

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from perceptron import Perceptron
-import wandb
+# import wandb
 
 s = os.path.join("http://archive.ics.uci.edu", "ml",
                 "machine-learning-databases",
@@ -73,5 +73,5 @@ def plot_decision_regions(X, y, classifier, resolution =  0.02):
 # ppn = Perceptron()
 plot_decision_regions(X, y, classifier=ppn)
 plt.show()
-wandb.finish()
+# wandb.finish()
 
