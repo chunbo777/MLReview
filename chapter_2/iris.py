@@ -2,7 +2,11 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from perceptron import Perceptron
+# from perceptron import Perceptron
+import sys
+sys.path.insert(0, "/Users/seojiwon/Desktop/codingtest/MLReview/chapter_3")
+# from logit import LogisticRegressionGD
+
 # import wandb
 
 s = os.path.join("http://archive.ics.uci.edu", "ml",
@@ -38,6 +42,7 @@ plt.plot(range(1, len(ppn.errors_) + 1),
 plt.xlabel("Epochs")
 plt.ylabel("Number of updates")
 plt.show()
+
 
 
 from matplotlib.colors import ListedColormap
